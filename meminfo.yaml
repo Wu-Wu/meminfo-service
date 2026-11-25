@@ -1,0 +1,15 @@
+name: meminfo
+container:
+  entrypoint: ./meminfo
+  mounts:
+    - source: /proc/meminfo
+      destination: /node-meminfo
+      type: bind
+      options:
+        - rshared
+        - rbind
+        - ro
+depends:
+  - network:
+    - addresses
+restart: always
